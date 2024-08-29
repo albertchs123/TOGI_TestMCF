@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "371cf5dc-7602-4494-b9b1-a3a3ed09e456": {
+      "ProjectGuid": "371cf5dc-7602-4494-b9b1-a3a3ed09e456",
+      "DisplayName": "bpkbFrontEnd",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 1
+}

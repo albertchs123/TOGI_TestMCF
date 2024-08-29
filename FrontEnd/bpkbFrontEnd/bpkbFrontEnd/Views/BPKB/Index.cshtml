@@ -1,0 +1,83 @@
+﻿@model IEnumerable<bpkbFrontEnd.Models.BPKBModel>
+
+@{
+    ViewData["Title"] = "List BPKB";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New BPKB</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Agreement Number</th>
+            <th>BPKB No</th>
+            <th>Branch ID</th>
+            <th>BPKB Date</th>
+            <th>Faktur No</th>
+            <th>Faktur Date</th>
+            <th>Location ID</th>
+            <th>Police No</th>
+            <th>BPKB Date In</th>
+            <th>Created By</th>
+            <th>Created On</th>
+            <th>Last Updated By</th>
+            <th>Last Updated On</th>
+             <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bpkb in Model)
+        {
+            <tr>
+                <td>@bpkb.agreement_number</td>
+                <td>@bpkb.bpkb_no</td>
+                <td>@bpkb.branch_id</td>
+                <td>@bpkb.bpkb_date</td>
+                <td>@bpkb.faktur_no</td>
+                <td>@bpkb.faktur_date</td>
+                <td>@bpkb.location_id</td>
+                <td>@bpkb.police_no</td>
+                <td>@bpkb.bpkb_date_in</td>
+                <td>@bpkb.created_by</td>
+                <td>@bpkb.created_on</td>
+                <td>@bpkb.last_updated_by</td>
+                <td>@bpkb.last_updated_on</td>
+                <td>
+                    <button class="btn btn-danger" onclick="deleteBPKB('@bpkb.agreement_number')">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        async function deleteBPKB(agreementNumber) {
+            if (confirm('Are you sure you want to delete this item?')) {
+                try {
+                    const response = await fetch(`https://localhost:7134/api/Bpkbs?agreement_number=${agreementNumber}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        alert('Item deleted successfully');
+                        window.location.reload();
+                    } else {
+                        const result = await response.json();
+                        alert('Failed to delete item: ' + result.message);
+                    }
+                } catch (error) {
+                    console.error('Error deleting item:', error);
+                    alert('Error deleting item');
+                }
+            }
+        }
+    </script>
+}

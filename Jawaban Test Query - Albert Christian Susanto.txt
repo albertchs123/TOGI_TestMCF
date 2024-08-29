@@ -1,0 +1,55 @@
+Query Test
+
+1.	
+Primary key : NoKontrak pada TabelPembayaran,  KodeCabang pada TableCabang, KodeMotor pada TabelMotor
+Foreign Key : KodeCabang,KodeMotor, dan NoKwitansi pada TabelPembayaran
+
+2.	
+select * from TabelPembayaran where TglBayar between '2014-10-20 ‘ and '2014-10-20’;
+
+3.	
+insert into TabelCabang (KodeCabang, NamaCabang) values (200, 'Tangerang');
+
+
+4.	
+update TabelPembayaran set KodeMotor = '001' 
+where KodeCabang =(select KodeCabang from TabelCabang where NamaCabang = 'Jakarta');
+
+5.	
+select 
+	TabelPembayaran.NoKontrak, 
+	TabelPembayaran.TglBayar, 
+	TabelPembayaran.JumlahBayar, 
+	TabelPembayaran.KodeCabang, 
+	TabelCabang.NamaCabang, 
+	TabelPembayaran.NoKwitansi, 
+	TabelPembayaran.KodeMotor, 
+	TabelMotor.NamaMotor 
+FROM TabelPembayaran 
+JOIN TabelCabang on TabelPembayaran.KodeCabang = TabelCabang.KodeCabang 
+JOIN TabelMotor on TabelPembayaran.KodeMotor = TabelMotor.KodeMotor;
+
+6.
+select 
+    TabelCabang.KodeCabang,
+    TabelCabang.NamaCabang,
+    TabelPembayaran.NoKontrak,
+    TabelPembayaran.NoKwitansi
+from 
+    TabelCabang
+left join
+    TabelPembayaran on TabelCabang.KodeCabang = TabelPembayaran.KodeCabang;
+
+7.
+select 
+    TabelCabang.KodeCabang,
+    TabelCabang.NamaCabang,
+    COUNT(TabelPembayaran.NoKontrak) AS TotalData,
+    ISNULL(SUM(TabelPembayaran.JumlahBayar), 0) AS TotalBayar
+from 
+    TabelCabang
+left join
+    TabelPembayaran ON TabelCabang.KodeCabang = TabelPembayaran.KodeCabang
+group by
+    TabelCabang.KodeCabang, 
+    TabelCabang.NamaCabang;

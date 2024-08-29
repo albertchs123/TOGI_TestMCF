@@ -1,0 +1,112 @@
+﻿@model bpkbFrontEnd.Models.BPKBModel
+
+@{
+    ViewData["Title"] = "Add New BPKB";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@*<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="agreement_number" class="control-label"></label>
+        <input asp-for="agreement_number" class="form-control" />
+        <span asp-validation-for="agreement_number" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="bpkb_no" class="control-label"></label>
+        <input asp-for="bpkb_no" class="form-control" />
+        <span asp-validation-for="bpkb_no" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="location_id" class="control-label"></label>
+        <select asp-for="location_id" id="locationIdDropdown" class="form-control">
+            <option value="">Select Location</option>
+        </select>
+        <span asp-validation-for="location_id" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>*@
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="agreement_number" class="control-label"></label>
+        <input asp-for="agreement_number" class="form-control" />
+        <span asp-validation-for="agreement_number" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="bpkb_no" class="control-label"></label>
+        <input asp-for="bpkb_no" class="form-control" />
+        <span asp-validation-for="bpkb_no" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="branch_id" class="control-label"></label>
+        <input asp-for="branch_id" class="form-control" />
+        <span asp-validation-for="branch_id" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="bpkb_date" class="control-label"></label>
+        <input asp-for="bpkb_date" class="form-control" type="date" />
+        <span asp-validation-for="bpkb_date" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="faktur_no" class="control-label"></label>
+        <input asp-for="faktur_no" class="form-control" />
+        <span asp-validation-for="faktur_no" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="faktur_date" class="control-label"></label>
+        <input asp-for="faktur_date" class="form-control" type="date" />
+        <span asp-validation-for="faktur_date" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="location_id" class="control-label"></label>
+        <select asp-for="location_id" id="locationIdDropdown" class="form-control">
+            <option value="">Select Location</option>
+        </select>
+        <span asp-validation-for="location_id" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="police_no" class="control-label"></label>
+        <input asp-for="police_no" class="form-control" />
+        <span asp-validation-for="police_no" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="bpkb_date_in" class="control-label"></label>
+        <input asp-for="bpkb_date_in" class="form-control" type="date" />
+        <span asp-validation-for="bpkb_date_in" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('https://localhost:7134/api/StorageLocations')
+                .then(response => response.json())
+                .then(data => {
+                    const dropdown = document.getElementById('locationIdDropdown');
+                    data.forEach(location => {
+                        const option = document.createElement('option');
+                        option.value = location.location_id;
+                        option.textContent = location.location_name;
+                        dropdown.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching locations:', error));
+        });
+    </script>
+}
+
