@@ -20,6 +20,9 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IBpkbServices, BpkbServices>();
+builder.Services.AddScoped<IStorageLocationService, StorageLocationService>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

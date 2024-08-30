@@ -9,17 +9,17 @@ namespace bpkbAPI.Controllers
     [Route("api/[controller]")]
     public class StorageLocationsController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IStorageLocationService _storageLocationService;
 
-        public StorageLocationsController(AppDbContext context)
+        public StorageLocationsController(IStorageLocationService storageLocationService)
         {
-            _context = context;
+            _storageLocationService = storageLocationService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var locations = await _context.ms_storage_location.ToListAsync();
+            var locations = await _storageLocationService.getAllDataLocation();
             return Ok(locations);
         }
     }

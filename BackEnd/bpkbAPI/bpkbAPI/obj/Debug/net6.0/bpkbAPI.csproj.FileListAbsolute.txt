@@ -61,3 +61,4 @@ D:\MCF\BackEnd\bpkbAPI\bpkbAPI\obj\Debug\net6.0\bpkbAPI.dll
 D:\MCF\BackEnd\bpkbAPI\bpkbAPI\obj\Debug\net6.0\ref\bpkbAPI.dll
 D:\MCF\BackEnd\bpkbAPI\bpkbAPI\obj\Debug\net6.0\bpkbAPI.pdb
 D:\MCF\BackEnd\bpkbAPI\bpkbAPI\obj\Debug\net6.0\bpkbAPI.genruntimeconfig.cache
+D:\MCF\BackEnd\bpkbAPI\bpkbAPI\obj\Debug\net6.0\bpkbAPI.csproj.AssemblyReference.cache
